@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Martin Rösel
+Copyright (c) 2025 Dr. Martin Rösel <opensource@roesel.at>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+Third-Party Libraries
+
+This project uses third-party libraries that are distributed under their respective open-source licenses.
+These licenses remain unaffected by this project's MIT License.
+
+A list of third-party libraries and their licenses can be found in the `third_party_licenses.txt` file.
+
+If you use or distribute this software, you are responsible for ensuring compliance
+with the terms of the respective third-party licenses.

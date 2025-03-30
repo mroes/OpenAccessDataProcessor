@@ -1,0 +1,14 @@
+// app global css in SCSS form
+.bordered {
+  /* border: grey 1px solid; */
+  /* box-shadow: 5px 5px;*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  margin: 5px;
+}
+
+// Info Tooltip, class for inner div
+.tooltipbox {
+  max-width: 300px; // max width of the info tooltip
+}
+

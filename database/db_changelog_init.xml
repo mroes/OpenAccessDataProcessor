@@ -1,0 +1,204 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<!--
+  ~  Copyright (c) 2025 Dr. Martin Rösel <opensource@roesel.at>
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
+  -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="mpr" id="create_tab_institution">
+        <createTable tableName="institution">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sname" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(1024)"/>
+            <column name="name2" type="VARCHAR(1024)"/>
+            <column name="active" type="TINYINT"/>
+            <column name="partner" type="TINYINT"/>
+            <column name="web" type="VARCHAR(255)"/>
+            <column name="wikiid" type="VARCHAR(255)"/>
+            <column name="repository" type="VARCHAR(255)"/>
+            <column name="repositoryparams" type="TEXT" defaultValue="{}" />
+            <column name="repositoryurl" type="VARCHAR(255)"/>
+            <column name="repositorykey" type="VARCHAR(255)"/>
+            <column name="keyvaliddate" type="INT"/>
+            <column name="comment" type="VARCHAR(2048)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_source">
+        <createTable tableName="source">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nativeid" type="VARCHAR(255)"/>
+            <column name="title" type="TEXT"/>
+            <column name="doi" type="VARCHAR(255)"/>
+            <column name="pubtype" type="VARCHAR(255)"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+            <column name="institution" type="VARCHAR(64)"/>
+            <column name="record" type="MEDIUMTEXT"/>
+            <column name="datatype" type="VARCHAR(64)"/>
+            <column name="affiliated" type="int"/>
+            <column name="status" type="int"/>
+            <column name="year" type="INT"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <replace replace="TEXT" with="TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+            <replace replace="MEDIUMTEXT" with="MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+    </changeSet>
+
+    <changeSet id="index_tab_source_doi" author="mpr">
+        <createIndex tableName="source" indexName="idx_doi">
+            <column name="doi"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_source_institution_nativeid" author="mpr">
+        <createIndex tableName="source" indexName="idx_institution_nativeid" unique="true">
+            <column name="institution"/>
+            <column name="nativeid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_publication">
+        <createTable tableName="publication">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)"/>
+            <column name="doi_src" type="INT"/>
+
+            <column name="title" type="TEXT"/>
+            <column name="titlehash" type="INT"/>
+            <column name="author" type="JSON"/>
+            <column name="year" type="INT"/>    <!-- of publication -->
+            <column name="pubdate" type="INT"/>    <!-- of publication -->
+            <column name="pubtypeid" type="INT"/>
+            <column name="publisher" type="VARCHAR(255)"/>
+            <column name="publisherid" type="VARCHAR(64)"/>
+            <column name="mainpublisherid" type="VARCHAR(64)"/>
+
+            <column name="journalid" type="VARCHAR(64)"/>
+            <column name="issn" type="VARCHAR(32)"/>
+
+            <column name="coat" type="VARCHAR(64)"/>
+            <column name="color" type="VARCHAR(32)"/>
+            <column name="colorupw" type="VARCHAR(255)"/>
+
+            <column name="licence" type="VARCHAR(256)"/>
+            <column name="props" type="TEXT"/>
+
+            <column name="comment" type="TEXT"/>
+            <column name="classification" type="INT"/>
+            <column name="status" type="int"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+
+        </createTable>
+<!--
+        <modifySql dbms="mysql">
+            <replace replace="TEXT" with="TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+        -->
+    </changeSet>
+
+    <changeSet id="index_tab_publication_doi" author="mpr">
+        <createIndex tableName="publication" indexName="idx_doi">
+            <column name="doi"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_publication_publisherid" author="mpr">
+        <createIndex tableName="publication" indexName="idx_publisherid">
+            <column name="publisherid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_publication_titlehash" author="mpr">
+        <createIndex tableName="publication" indexName="idx_titlehash">
+            <column name="titlehash"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="index_publication_status" >
+        <createIndex tableName="publication" indexName="idx_status">
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_publication_institution">
+        <createTable tableName="publication_institution">
+            <column name="sourceid" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="institutionid" type="VARCHAR(64)" />
+            <column name="publicationid" type="VARCHAR(64)"/>
+            <column name="nativeid" type="VARCHAR(255)"/>
+            <column name="organisation" type="VARCHAR(255)"/>
+            <column name="corr" type="int"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                constraintName="fk_publicationid"
+                baseTableName="publication_institution"
+                baseColumnNames="publicationid"
+                referencedTableName="publication"
+                referencedColumnNames="id"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+        />
+    </changeSet>
+
+    <changeSet id="index_tab_publication_institution_institution" author="mpr">
+        <createIndex tableName="publication_institution" indexName="idx_institution">
+            <column name="institutionid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_pubtype">
+        <createTable tableName="pubtype">
+            <column name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(64)"/> <!-- coar_type label -->
+            <column name="coarid" type="VARCHAR(16)"/>
+            <column name="parentid" type="INT"/>
+            <column name="mappedtoid" type="INT"/> <!-- wird als anderer Typ abgebildet -->
+            <column name="enabled" type="TINYINT"/> <!-- true, wird berücksichtigt -->
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_pubtype_mapping">
+        <createTable tableName="pubtype_mapping">
+            <column name="id" type="INT"
+                    autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="institutionid" type="VARCHAR(64)"/>
+            <column name="value" type="VARCHAR(128)"/>
+            <column name="pubtypeid" type="INT" />
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

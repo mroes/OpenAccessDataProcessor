@@ -1,0 +1,323 @@
+openapi: "3.0.0"
+info:
+  description: Service for retrieving metadata of publications
+  title: OpenAPI Open Access Data Processor
+  version: 1.0.0
+paths:
+  /ws/publication/{publication_id}:
+    get:
+      tags:
+        - Publication
+      summary: API to retrieve a single publication by identifier
+      responses:
+        '200':
+          description: publication metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+        '400':
+          description: error detail in case of Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: error if no publication is found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: error detail in case of server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getPublication
+      parameters:
+        - in: path
+          name: publication_id
+          required: true
+          description: |
+            Can either be
+            - an internal publication id, e.g. 0008122f-1a4c-48ab-adb8-1947adf3854a
+            - a DOI, e.g. 10.1016/j.jsc.2023.102236
+          schema:
+            type: string
+  /ws/publications:
+    get:
+      tags:
+        - Publication
+      summary: API to fetch publications by search criteria
+      responses:
+        '200':
+          description: publication metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResponse'
+        '400':
+          description: error detail in case of Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResponse'
+        '500':
+          description: error detail in case of server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResponse'
+      operationId: listPublications
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          description: Number of records that will be returned in one request
+          schema:
+            type: integer
+            default: 200
+            maximum: 2000
+        - in: query
+          name: cursor
+          required: false
+          description: Search cursor. Use the cursor to iterate through the publications
+          schema:
+            type: string
+        - in: query
+          name: doi
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: institution
+          required: false
+          description: ROR-Id of requested institution, e.g. https://ror.org/03prydq77
+          schema:
+            type: string
+        - in: query
+          name: year
+          required: false
+          description: year of publication
+          schema:
+            type: integer
+        - in: query
+          name: oacolor
+          required: false
+          description: Open Access Color
+          schema:
+            type: string
+            enum:
+              - Diamant
+              - Gold-pur
+              - Hybrid
+              - Green-Post
+              - Green-Pre
+              - Bronze
+              - Closed
+              - Unknown
+        - in: query
+          name: include
+          required: false
+          description: |
+            List of additional field names to include in the response
+            - author
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["author"]
+          style: form
+          explode: false
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        given:
+          type: string
+          description: Given name
+          example: John
+        family:
+          type: string
+          description: Family name
+          example: Talisker
+        orcid:
+          type: string
+          description: ORCID of author
+          example: http://orcid.org/0000-0002-9999-9999
+        corresponding:
+          type: boolean
+          description: true, if the author is a corresponding author
+          example: true
+    SourceRef:
+      type: object
+      properties:
+        institutionId:
+          type: string
+          description: Id of the institution that has the publication in the source repository
+        nativeId:
+          type: string
+          description: Id of the publication in the source repository of the institution
+        corresponding:
+          type: boolean
+          description: true, if one of the corresponding authors is associated with the institution
+          example: true
+    PublicationType:
+      type: object
+      properties:
+        coarid:
+          type: string
+          description: COAR Id
+          example: c_6501
+          externalDocs:
+            description: Publication type according to the COAR vocabulary
+            url: https://vocabularies.coar-repositories.org/resource_types/
+        name:
+          type: string
+          description: Name of type
+          example: journal article
+    Publisher:
+      type: object
+      properties:
+        name:
+          type: string
+          format: publisher name
+          example: Taylor and Francis
+        wikidataId:
+          type: string
+          description: wikidata Id
+          example: https://www.wikidata.org/wiki/Q880582
+    Journal:
+      type: object
+      properties:
+        title:
+          type: string
+          description: title of journal
+          example: Applied Physics
+        wikidataId:
+          type: string
+          description: wikidata Id
+          example: https://www.wikidata.org/wiki/Q880582
+        issn:
+          type: array
+          items:
+            type: string
+          description: ISSNs of journal
+          example: ["1111-2222"]
+        eissn:
+          type: string
+          x-hidden: true
+    Licence:
+      type: object
+      properties:
+        licence:
+          type: string
+          description: normalized licence
+          example: CC BY
+        url:
+          type: string
+          description: LicenceUrl
+        source:
+          type: string
+          description: Source of Licence
+    Costs:
+      type: object
+      properties:
+        amount:
+          type: string
+          description: costs amount
+          example: 100
+        currency:
+          type: string
+          description: costs currency
+          example: EUR
+        source:
+          type: string
+          description: Source of Costs
+    Publication:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 273721
+          description: Unique internal Id of publication
+        doi:
+          type: string
+          description: DOI of publication
+          example: 10.9999/abcdef
+        title:
+          type: string
+          example: Praktische Ansätze zur Verlagsnormierung
+        author:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+        year:
+          type: integer
+          format: int32
+          description: year of publication
+          example: 2022
+        coat:
+          type: string
+          description: |
+            [COAT of publication](https://doi.org/10.31263/voebm.v72i1.2276)
+          example: 1,1,1,1,2
+        oa_color:
+          type: string
+          description: Open Access Color of publication
+          example: Gold-pur
+        upw_color:
+          type: string
+          description: Open Access Color of publication from Unpaywall
+          example: gold
+        type:
+          $ref: '#/components/schemas/PublicationType'
+        publisher:
+          $ref: '#/components/schemas/Publisher'
+        main_publisher:
+          $ref: '#/components/schemas/Publisher'
+        journal:
+          $ref: '#/components/schemas/Journal'
+        licence:
+          $ref: '#/components/schemas/Licence'
+        costs:
+          $ref: '#/components/schemas/Costs'
+        version:
+          type: string
+          description: Open Access version
+          example: publishedVersion
+        place:
+          type: string
+          description: Open Access place
+          example: publisher
+        repository_link:
+          type: string
+          description: Open Access repository link
+          example: https://doi.org/10.1016/j.cma.2023.116491
+        source_refs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceRef'
+    PublicationResponse:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: search cursor
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Publication'
+        error:
+          $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        error_description:
+          type: string
+          description: Error Description
+        error:
+          type: string
+          description: Error Code

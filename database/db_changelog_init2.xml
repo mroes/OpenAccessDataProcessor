@@ -1,0 +1,296 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<!--
+  ~  Copyright (c) 2025 Dr. Martin Rösel <opensource@roesel.at>
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
+  -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="mpr" id="create_tab_publisher">
+        <createTable tableName="publisher">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="mainid" type="VARCHAR(64)"/> <!-- ID of the main record if the record is an alias -->
+            <column name="wikiid" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(1024)"/>
+            <column name="alias" type="VARCHAR(2048)"/> <!-- Alternative names -->
+            <column name="wikiparentid" type="VARCHAR(2048)"/>
+            <column name="parentid" type="VARCHAR(255)"/>
+            <column name="ror" type="VARCHAR(2048)"/>
+            <column name="isni" type="VARCHAR(2048)"/>
+            <column name="ringgoldid" type="VARCHAR(2048)"/>
+            <column name="romeoid" type="VARCHAR(32)"/>
+            <column name="flag" type="int"/>
+            <column name="top" type="int"/> <!-- The publisher should be taken as the top-level publisher. -->
+            <column name="wikiinstanceof" type="VARCHAR(255)"/>
+            <column name="prefix" type="VARCHAR(32)"/> <!-- DOI prefix -->
+            <column name="updated_wikidata" type="BIGINT" defaultValue="0" />
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="index_tab_publisher_wikiid" author="mpr">
+        <createIndex tableName="publisher" indexName="idx_wikiid" unique="true">
+            <column name="wikiid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_publisher_name" author="mpr">
+        <createIndex tableName="publisher" indexName="idx_name">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_publishervar">
+        <createTable tableName="publishervar">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="publisherid" type="VARCHAR(64)"/>
+            <column name="name" type="VARCHAR(1024)"/>
+            <column name="wikiparentid" type="VARCHAR(32)"/>
+            <column name="parentid" type="VARCHAR(64)"/>
+            <column name="startdate" type="INT"/>
+            <column name="enddate" type="INT"/>
+            <column name="flag" type="int"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_journal">
+        <createTable tableName="journal">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="wikiid" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(1024)"/>
+            <column name="title" type="VARCHAR(1024)"/>
+            <column name="wikipublisherid" type="VARCHAR(255)"/>
+            <column name="publisherid" type="VARCHAR(64)"/>
+            <column name="issn" type="VARCHAR(1024)"/>
+            <column name="issnl" type="VARCHAR(16)"/>
+            <column name="crjournalid" type="VARCHAR(128)"/>
+            <column name="flag" type="int"/>
+            <column name="wikiinstanceof" type="VARCHAR(255)"/>
+            <column name="updated_wikidata" type="BIGINT" defaultValue="0" />
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="index_tab_journal_wikiid" author="mpr">
+        <!-- Create a new unique index -->
+        <createIndex tableName="journal" indexName="idx_wikiid" unique="true">
+            <column name="wikiid"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_journal_name" author="mpr">
+        <createIndex tableName="journal" indexName="idx_name">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_journal_flag" author="mpr">
+        <createIndex tableName="journal" indexName="idx_flag">
+            <column name="flag"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_journal_issn" author="mpr">
+        <createIndex tableName="journal" indexName="idx_issn">
+            <column name="issn"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_journal_issnl" author="mpr">
+        <createIndex tableName="journal" indexName="idx_issnl">
+            <column name="issnl"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_journalvar">
+        <createTable tableName="journalvar">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="journalid" type="VARCHAR(64)"/>
+            <column name="name" type="VARCHAR(1024)"/>
+            <column name="wikipublisherid" type="VARCHAR(32)"/>
+            <column name="publisherid" type="VARCHAR(64)"/>
+            <column name="startdate" type="INT"/>
+            <column name="enddate" type="INT"/>
+            <column name="flag" type="int"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_doaj">
+    <createTable tableName="doaj">
+        <column name="id" type="VARCHAR(255)">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="title" type="VARCHAR(255)"/>
+        <column name="alternativetitle" type="VARCHAR(255)"/>
+        <column name="issn" type="VARCHAR(32)"/>
+        <column name="eissn" type="VARCHAR(32)"/>
+        <column name="licence" type="VARCHAR(255)"/>
+        <column name="apc_amount" type="BIGINT"/>
+        <column name="apc_currency" type="VARCHAR(8)"/>
+        <column name="oa_start" type="INT"/>
+
+        <column name="publisher" type="VARCHAR(255)"/>
+        <column name="startdate" type="INT"/>
+        <column name="enddate" type="INT"/>
+
+        <column name="created" type="BIGINT"/>
+        <column name="updated" type="BIGINT"/>
+        <column name="deleted" type="BIGINT"/>
+
+    </createTable>
+    </changeSet>
+
+    <changeSet id="index_tab_doaj_issn" author="mpr">
+        <createIndex tableName="doaj" indexName="doaj_issn_idx">
+            <column name="issn"/>
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="index_tab_doaj_eissn" author="mpr">
+        <createIndex tableName="doaj" indexName="doaj_eissn_idx">
+            <column name="eissn"/>
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_openapc">
+        <createTable tableName="openapc">
+            <column name="id" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="institution" type="VARCHAR(255)"/>
+            <column name="period" type="INT"/>
+            <column name="amount" type="BIGINT"/>
+            <column name="doi" type="VARCHAR(255)"/>
+            <column name="is_hybrid" type="BOOLEAN"/>
+            <column name="publisher" type="VARCHAR(255)"/>
+            <column name="journal_full_title" type="VARCHAR(255)"/>
+            <column name="issn" type="VARCHAR(255)"/>
+            <column name="issn_print" type="VARCHAR(255)"/>
+            <column name="issn_electronic" type="VARCHAR(255)"/>
+            <column name="issn_l" type="VARCHAR(255)"/>
+            <column name="license_ref" type="VARCHAR(255)"/>
+            <column name="indexed_in_crossref" type="BOOLEAN"/>
+            <column name="pmid" type="VARCHAR(255)"/>
+            <column name="pmcid" type="VARCHAR(255)"/>
+            <column name="ut" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(8192)"/>
+            <column name="doaj" type="BOOLEAN"/>
+            <column name="agreement" type="VARCHAR(128)"/>
+            <column name="ta" type="TINYINT"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="index_tab_openapc_doi" >
+        <createIndex tableName="openapc" indexName="idx_doi" unique="true">
+            <column name="doi"/>
+        </createIndex>
+    </changeSet>
+
+
+    <changeSet author="mpr" id="create_tab_sherparomeo">
+        <createTable tableName="sherparomeo">
+            <column name="issn" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+            <column name="record" type="MEDIUMTEXT"/>
+            <column name="status" type="int"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <replace replace="MEDIUMTEXT" with="MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_crossref">
+        <createTable tableName="crossref">
+            <column name="doi" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+            <column name="record" type="MEDIUMTEXT"/>
+            <column name="status" type="int"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <replace replace="MEDIUMTEXT" with="MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_unpaywall">
+        <createTable tableName="unpaywall">
+            <column name="doi" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+            <column name="record" type="MEDIUMTEXT"/>
+            <column name="status" type="int"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <replace replace="MEDIUMTEXT" with="MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_openalex">
+        <createTable tableName="openalex">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nativeid" type="VARCHAR(255)"/>
+            <column name="title" type="TEXT"/>
+            <column name="doi" type="VARCHAR(255)"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+            <column name="institution" type="VARCHAR(64)"/>
+            <column name="record" type="MEDIUMTEXT"/>
+            <column name="datatype" type="VARCHAR(64)"/>
+            <column name="status" type="int"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <replace replace="MEDIUMTEXT" with="MEDIUMTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci" />
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="mpr" id="index_tab_openalex_doi" >
+        <createIndex tableName="openalex" indexName="idx_doi" unique="true">
+            <column name="doi"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

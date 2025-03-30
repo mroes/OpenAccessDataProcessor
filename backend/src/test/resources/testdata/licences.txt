@@ -1,0 +1,194 @@
+CC BY	CC BY		OpenLicence
+CC BY-NC	CC BY-NC		FreeLicence
+CC BY-NC-ND	CC BY-NC-ND		FreeLicence
+CC BY-NC-SA	CC BY-NC-SA		FreeLicence
+CC BY-ND	CC BY-ND		FreeLicence
+CC BY-SA	CC BY-SA		OpenLicence
+cc-by	CC BY		OpenLicence
+cc-by-nc	CC BY-NC		FreeLicence
+cc-by-nc-nd	CC BY-NC-ND		FreeLicence
+cc-by-nc-sa	CC BY-NC-SA		FreeLicence
+cc-by-nd	CC BY-ND		FreeLicence
+cc-by-sa	CC BY-SA		OpenLicence
+CC0	CC0		OpenLicence
+elsevier-specific	other		ProprietaryLicence
+http://academic.oup.com/journals/pages/about_us/legal/notices	other		ProprietaryLicence
+http://aspb.org/publications/aspb-journals/open-articles	other		ProprietaryLicence
+http://creativecommons.org/licenses/by-nc-nd/2.0/de/deed.de	CC BY-NC-ND	2.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/2.5/ca/	CC BY-NC-ND	2.5	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/3.0	CC BY-NC-ND	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/3.0/	CC BY-NC-ND	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/3.0/at/deed.en	CC BY-NC-ND	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/4.0	CC BY-NC-ND	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/4.0/	CC BY-NC-ND	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode	CC BY-NC-ND	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-sa/3.0	CC BY-NC-SA	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-sa/3.0/	CC BY-NC-SA	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-sa/4.0	CC BY-NC-SA	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc-sa/4.0/	CC BY-NC-SA	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/2.0	CC BY-NC	2.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/2.0/	CC BY-NC	2.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/2.5	CC BY-NC	2.5	FreeLicence
+http://creativecommons.org/licenses/by-nc/2.5/	CC BY-NC	2.5	FreeLicence
+http://creativecommons.org/licenses/by-nc/3.0	CC BY-NC	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/3.0/	CC BY-NC	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/3.0/us/	CC BY-NC	3.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/4.0	CC BY-NC	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nc/4.0/	CC BY-NC	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nd/4.0	CC BY-ND	4.0	FreeLicence
+http://creativecommons.org/licenses/by-nd/4.0/	CC BY-ND	4.0	FreeLicence
+http://creativecommons.org/licenses/by-sa/4.0	CC BY-SA	4.0	OpenLicence
+http://creativecommons.org/licenses/by-sa/4.0/	CC BY-SA	4.0	OpenLicence
+http://creativecommons.org/licenses/by-sa/4.0/deed.de	CC BY-SA	4.0	OpenLicence
+http://creativecommons.org/licenses/by/2.0	CC BY	2.0	OpenLicence
+http://creativecommons.org/licenses/by/2.0/	CC BY	2.0	OpenLicence
+http://creativecommons.org/licenses/by/2.0/uk/legalcode	CC BY	2.0	OpenLicence
+http://creativecommons.org/licenses/by/3.0	CC BY	3.0	OpenLicence
+http://creativecommons.org/licenses/by/3.0/	CC BY	3.0	OpenLicence
+http://creativecommons.org/licenses/by/3.0/deed.en_US	CC BY	3.0	OpenLicence
+http://creativecommons.org/licenses/by/4.0	CC BY	4.0	OpenLicence
+http://creativecommons.org/licenses/by/4.0/	CC BY	4.0	OpenLicence
+http://creativecommons.org/licenses/by/4.0/deed.en	CC BY	4.0	OpenLicence
+http://creativecommons.org/licenses/by/4.0/legalcode	CC BY	4.0	OpenLicence
+http://creativecommons.org/licenses/CC-BY-NC/4.0	CC BY-NC	4.0	FreeLicence
+http://creativecommons.org/licenses/ny/3.0/	CC NY	3.0	ProprietaryLicence
+http://creativecommons.org/licenses/ny/4.0/	CC NY	4.0	ProprietaryLicence
+http://creativecommons.org/publicdomain/zero/1.0/	PD		OpenLicence
+http://doi.wiley.com/10.1002/tdm_license_1	other		ProprietaryLicence
+http://doi.wiley.com/10.1002/tdm_license_1.1	other		ProprietaryLicence
+http://iieta.org/sites/default/files/TEXT%20AND%20DATA%20MINING%20SERVICE%20AGREEMENT.pdf	other		ProprietaryLicence
+http://iiit.org/en/home/	other		ProprietaryLicence
+http://iopscience.iop.org/info/page/text-and-data-mining	other		ProprietaryLicence
+http://journals.iucr.org/services/copyrightpolicy.html	other		ProprietaryLicence
+http://journals.sagepub.com/page/policies/text-and-data-mining-license	other		ProprietaryLicence
+http://link.aps.org/licenses/aps-default-license	other		ProprietaryLicence
+http://onlinelibrary.wiley.com/termsAndConditions#am	other		ProprietaryLicence
+http://onlinelibrary.wiley.com/termsAndConditions#vor	other		ProprietaryLicence
+http://pubs.acs.org/page/policy/authorchoice_ccby_termsofuse.html	CC BY		OpenLicence
+http://pubs.acs.org/page/policy/authorchoice_ccbyncnd_termsofuse.html	CC BY-NC-ND		FreeLicence
+http://pubs.acs.org/page/policy/authorchoice_termsofuse.html	other		ProprietaryLicence
+http://rsc.li/journals-terms-of-use	other		ProprietaryLicence
+http://rsc.li/journals-terms-of-use#chorus	other		ProprietaryLicence
+http://ub.uu.se/publish/diva-en/divas-publishing-conditions/	other		ProprietaryLicence
+http://www.acm.org/publications/policies/copyright_policy#Background	other		ProprietaryLicence
+http://www.ametsoc.org/PUBSReuseLicenses	other		ProprietaryLicence
+http://www.apa.org/pubs/journals/resources/open-access.aspx	other		ProprietaryLicence
+http://www.biologists.com/user-licence-1-1	other		ProprietaryLicence
+http://www.biologists.com/user-licence-1-1/	other		ProprietaryLicence
+http://www.bioone.org/page/resources/researchers/rights_and_permissions	other		ProprietaryLicence
+http://www.bmj.com/company/legal-information/terms-conditions/legal-information/tdm-licencepolicy	other		ProprietaryLicence
+http://www.bmj.org/licenses/tdm/1.0/terms-and-conditions.html	other		ProprietaryLicence
+http://www.diabetesjournals.org/content/license	other		ProprietaryLicence
+http://www.diabetesjournals.org/site/license	other		ProprietaryLicence
+http://www.elsevier.com/tdm/userlicense/1.0/	other		ProprietaryLicence
+http://www.emeraldinsight.com/page/tdm	other		ProprietaryLicence
+http://www.liebertpub.com/nv/resources-tools/text-and-data-mining-policy/121/	other		ProprietaryLicence
+http://www.nejmgroup.org/legal/terms-of-use.htm	other		ProprietaryLicence
+http://www.nrcresearchpress.com/page/about/CorporateTextAndDataMining	other		ProprietaryLicence
+http://www.pnas.org/preview_site/misc/userlicense.xhtml	other		ProprietaryLicence
+http://www.pnas.org/site/aboutpnas/licenses.xhtml	other		ProprietaryLicence
+http://www.pnas.org/site/misc/userlicense.xhtml	other		ProprietaryLicence
+http://www.sagepub.com/licence-information-for-chorus	other		ProprietaryLicence
+http://www.sciencemag.org/about/science-licenses-journal-article-reuse	other		ProprietaryLicence
+http://www.sciencemag.org/site/feature/contribinfo/prep/license.xhtml	other		ProprietaryLicence
+http://www.sederi.org/yearbook/infoauthors/	other		ProprietaryLicence
+http://www.springer.com/tdm	other		ProprietaryLicence
+http://www.usc.es/revistas/index.php/verba/about/submissions#copyrightNotice	other		ProprietaryLicence
+https://academic.oup.com/journals/pages/about_us/legal/notices	other		ProprietaryLicence
+https://academic.oup.com/journals/pages/open_access/funder_policies/chorus/standard_publication_model	other		ProprietaryLicence
+https://academic.oup.com/pages/standard-publication-reuse-rights	other		ProprietaryLicence
+https://benjamins.com/content/customers/rights	other		ProprietaryLicence
+https://bmj.com/coronavirus/usage	other		ProprietaryLicence
+https://copyrights.bg/%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD-%D0%B7%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D1%82%D0%BE-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE/	other		ProprietaryLicence
+https://creativecommons.org/licenses/authors	CC AUTHORS		ProprietaryLicence
+https://creativecommons.org/licenses/by-nc-nd/3.0/	CC BY-NC-ND	3.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-nd/4.0	CC BY-NC-ND	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-nd/4.0/	CC BY-NC-ND	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.cs	CC BY-NC-ND	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-sa/2.5/	CC BY-NC-SA	2.5	FreeLicence
+https://creativecommons.org/licenses/by-nc-sa/3.0/	CC BY-NC-SA	3.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-sa/4.0	CC BY-NC-SA	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-sa/4.0/	CC BY-NC-SA	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de	CC BY-NC-SA	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/2.0	CC BY-NC	2.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/2.0/	CC BY-NC	2.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/3.0/	CC BY-NC	3.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/4.0	CC BY-NC	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/4.0/	CC BY-NC	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nc/4.0/legalcode	CC BY-NC	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nd-nc/4.0/	CC BY-ND-NC	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nd/3.0/de/	CC BY-ND	3.0	FreeLicence
+https://creativecommons.org/licenses/by-nd/4.0	CC BY-ND	4.0	FreeLicence
+https://creativecommons.org/licenses/by-nd/4.0/	CC BY-ND	4.0	FreeLicence
+https://creativecommons.org/licenses/by-sa/4.0	CC BY-SA	4.0	OpenLicence
+https://creativecommons.org/licenses/by-sa/4.0/	CC BY-SA	4.0	OpenLicence
+https://creativecommons.org/licenses/by-sa/4.0/deed.de	CC BY-SA	4.0	OpenLicence
+https://creativecommons.org/licenses/by-sa/4.0/legalcode.de	CC BY-SA	4.0	OpenLicence
+https://creativecommons.org/licenses/by/2.0	CC BY	2.0	OpenLicence
+https://creativecommons.org/licenses/by/3.0/	CC BY	3.0	OpenLicence
+https://creativecommons.org/licenses/by/3.0/igo/	CC BY	3.0	OpenLicence
+https://creativecommons.org/licenses/by/3.0/legalcode	CC BY	3.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0	CC BY	4.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0/	CC BY	4.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0/deed.de	CC BY	4.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0/deed.fr	CC BY	4.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0/legalcode	CC BY	4.0	OpenLicence
+https://creativecommons.org/licenses/by/4.0/legalcode.pl	CC BY	4.0	OpenLicence
+https://creativecommons.org/publicdomain/zero/1.0/	PD		OpenLicence
+https://doi.org/10.1128/ASMCopyrightv2	other		ProprietaryLicence
+https://doi.org/10.1128/AuthorWarrantyLicense.v1	other		ProprietaryLicence
+https://doi.org/10.1364/OA_License_v1#CCBY	CC BY		OpenLicence
+https://doi.org/10.1364/OA_License_v1#VOR-OA	other		ProprietaryLicence
+https://doi.org/10.1364/OA_License_v2#CCBY	CC BY		OpenLicence
+https://doi.org/10.1364/OA_License_v2#VOR	other		ProprietaryLicence
+https://doi.org/10.1364/OA_License_v2#VOR-OA	other		ProprietaryLicence
+https://doi.org/10.15223/policy-001	other		ProprietaryLicence
+https://doi.org/10.15223/policy-002	other		ProprietaryLicence
+https://doi.org/10.15223/policy-010	other		ProprietaryLicence
+https://doi.org/10.15223/policy-029	other		ProprietaryLicence
+https://doi.org/10.32604/TSP-CROSSMARKPOLICY	other		ProprietaryLicence
+https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/Crown.html	other		ProprietaryLicence
+https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/EU.html	other		ProprietaryLicence
+https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html	other		ProprietaryLicence
+https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/OAPA.html	other		ProprietaryLicence
+https://inference-review.com/terms-of-use	other		ProprietaryLicence
+https://iopscience.iop.org/page/copyright	other		ProprietaryLicence
+https://journals.asm.org/non-commercial-tdm-license	other		ProprietaryLicence
+https://link.aps.org/licenses/aps-default-license	other		ProprietaryLicence
+https://nguhist.elpub.ru/jour/about/editorialPolicies#openAccessPolicy	other		ProprietaryLicence
+https://online.boneandjoint.org.uk/TDM	other		ProprietaryLicence
+https://publishing.aip.org/authors/rights-and-permissions	other		ProprietaryLicence
+https://pubs.acs.org/page/policy/authorchoice_ccby_termsofuse.html	CC BY		OpenLicence
+https://pubs.acs.org/page/policy/authorchoice_termsofuse.html	other		ProprietaryLicence
+https://rightsstatements.org/page/InC/1.0/	other		ProprietaryLicence
+https://royalsociety.org/-/media/journals/author/Licence-to-Publish-20062019-final.pdf	other		ProprietaryLicence
+https://royalsociety.org/journals/ethics-policies/data-sharing-mining/	other		ProprietaryLicence
+https://www.aaai.org	other		ProprietaryLicence
+https://www.ams.org/publications/copyright-and-permissions	other		ProprietaryLicence
+https://www.asme.org/publications-submissions/publishing-information/legal-policies	other		ProprietaryLicence
+https://www.cambridge.org/core/terms	other		ProprietaryLicence
+https://www.degruyter.com/dg/page/free-access-policy	other		ProprietaryLicence
+https://www.diabetesjournals.org/content/license	other		ProprietaryLicence
+https://www.edpsciences.org/en/authors/copyright-and-licensing	other		ProprietaryLicence
+https://www.elsevier.com/tdm/userlicense/1.0/	other		ProprietaryLicence
+https://www.emerald.com/insight/site-policies	other		ProprietaryLicence
+https://www.emeraldinsight.com/page/tdm	other		ProprietaryLicence
+https://www.ersjournals.com/user-licence	other		ProprietaryLicence
+https://www.euppublishing.com/customer-services/librarians/text-and-data-mining-tdm	other		ProprietaryLicence
+https://www.geolsoc.org.uk/publications/lyell-collection/user-license-1-1	other		ProprietaryLicence
+https://www.int-res.com/journals/terms-of-use/	other		ProprietaryLicence
+https://www.intellectbooks.com/self-archiving#accepted-manuscript-during-embargo	other		ProprietaryLicence
+https://www.karger.com/Services/SiteLicenses	other		ProprietaryLicence
+https://www.liebertpub.com/nv/resources-tools/text-and-data-mining-policy/121/	other		ProprietaryLicence
+https://www.osapublishing.org/submit/licenses/license_v1.cfm#am	other		ProprietaryLicence
+https://www.osapublishing.org/submit/licenses/license_v1.cfm#vor	other		ProprietaryLicence
+https://www.pnas.org/site/aboutpnas/licenses.xhtml	other		ProprietaryLicence
+https://www.scientific.net/PolicyAndEthics/PublishingPolicies	other		ProprietaryLicence
+https://www.springer.com/tdm	other		ProprietaryLicence
+https://www.springernature.com/gp/researchers/text-and-data-mining	other		ProprietaryLicence
+https://www.stm-assoc.org/asf/policy-002	other		ProprietaryLicence
+implied-oa	other		ProprietaryLicence
+pd	PD		OpenLicence
+Public domain	PD		OpenLicence
+publisher-specific license	other		ProprietaryLicence
+Publisher's own license	other		ProprietaryLicence

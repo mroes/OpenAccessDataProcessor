@@ -1,0 +1,116 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<!--
+  ~  Copyright (c) 2025 Dr. Martin Rösel <opensource@roesel.at>
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
+  -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet author="mpr" id="create_tab_sourcelog">
+        <createTable tableName="sourcelog">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="institutionid" type="VARCHAR(64)"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="status" type="int"/>
+            <column name="starttime" type="BIGINT"/>
+            <column name="endtime" type="BIGINT"/>
+            <column name="created" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_elasticlog">
+        <createTable tableName="elasticlog">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="comment" type="VARCHAR(1024)"/>
+            <column name="records" type="int"/>
+            <column name="status" type="int"/>
+            <column name="updatetime" type="BIGINT"/>
+            <column name="starttime" type="BIGINT"/>
+            <column name="endtime" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_faq">
+        <createTable tableName="faq">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="number" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="question" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="answer" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="lang" type="VARCHAR(4)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_last_imports">
+        <createTable tableName="last_imports">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="INT"/>
+            <column name="lastimport" type="INT"/>
+            <column name="comment" type="VARCHAR(1024)"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_users">
+        <createTable tableName="users">
+            <column name="id" type="VARCHAR(64)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(64)"/>
+            <column name="token" type="VARCHAR(128)"/>
+            <column name="hashedtoken" type="VARCHAR(64)"/>
+            <column name="role" type="VARCHAR(32)"/>
+            <column name="institutionid" type="VARCHAR(255)"/>
+            <column name="created" type="BIGINT"/>
+            <column name="updated" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="mpr" id="create_tab_search">
+        <createTable tableName="search">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)" />
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="time" type="BIGINT"/>
+            <column name="ip" type="VARCHAR(255)" />
+        </createTable>
+    </changeSet>
+
+
+
+</databaseChangeLog>

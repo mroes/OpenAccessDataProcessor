@@ -1,0 +1,99 @@
+/*
+ *  Copyright (c) 2025 Dr. Martin Rösel <opensource@roesel.at>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ */
+
+package at.roesel.oadataprocessor.services.publicationsource;
+
+import at.roesel.oadataprocessor.model.Author;
+import at.roesel.oadataprocessor.model.Publication;
+import at.roesel.oadataprocessor.model.PublicationSource;
+import at.roesel.oadataprocessor.model.json.JsonAuthor;
+import at.roesel.oadataprocessor.model.json.JsonJournal;
+import at.roesel.oadataprocessor.model.json.JsonPublication;
+import at.roesel.oadataprocessor.model.json.JsonPublisher;
+import at.roesel.oadataprocessor.persistance.conversion.ObjectConverter;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static at.roesel.oadataprocessor.support.DateUtil.*;
+
+/*
+ * creates a JsonPublication from a Publication
+ */
+public class PublicationFromJsonCreator extends BasicPublicationCreator {
+
+    private final ObjectConverter<JsonPublication> converter = new ObjectConverter<>(JsonPublication.class);
+
+    public Publication from(PublicationSource source) {
+
+        JsonPublication jsonPublication = converter.convertToEntityAttribute(source.getRecord());
+
+        Publication publication = super.from(source);
+        publication.setId(source.getId());
+        publication.setTitle(source.getTitle());
+
+        publication.setDoi(source.getDoi());
+        Integer year = jsonPublication.getYear();
+        if (year != null) {
+            publication.setYear(year);
+        }
+
+        // publication date
+        String pubdate = jsonPublication.getPubdate();
+        if (pubdate != null && !pubdate.isEmpty()) {
+            int yearFromDate;
+            try {
+                LocalDate date = localDateFromIso8601(pubdate);
+                publication.setDate(localDateToInt(date));
+                yearFromDate = date.getYear();
+            } catch (Exception e) {
+                yearFromDate = yearFromStr(pubdate);
+            }
+            if (year == null) {
+                publication.setYear(yearFromDate);
+            }
+        }
+
+        // authors
+        List<JsonAuthor> jsonAuthors = jsonPublication.getAuthors();
+        if (jsonAuthors != null) {
+            publication.setAuthors(jsonAuthors.stream().map(this::fromJsonAuthor).collect(Collectors.toList()));
+        }
+        JsonPublisher publisher = jsonPublication.getPublisher();
+        if (publisher != null) {
+            publication.setPublisher(publisher.getName());
+        }
+        JsonJournal journal = jsonPublication.getJournal();
+        if (journal != null) {
+            publication.setNormalizedIssn(journal.getIssn());
+        }
+        return publication;
+    }
+
+    private Author fromJsonAuthor(JsonAuthor jsonAuthor) {
+        Author author = new Author();
+        author.lastName = jsonAuthor.getFamily();
+        author.firstName = jsonAuthor.getGiven();
+        return author;
+    }
+}

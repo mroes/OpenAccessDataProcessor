@@ -1,0 +1,62 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+*.log
+*.war
+
+.openapi-generator/
+
+# Frontend
+.quasar
+node_modules
+lib/
+out/
+.~*
+logs/
+*.pdf
+*.fdf
+
+# Frontend files in backend
+backend/src/main/resources/public/fonts/
+backend/src/main/resources/public/js/
+backend/src/main/resources/public/statics/
+backend/src/main/resources/public/css
+backend/src/main/resources/public/
+
+# jest
+frontend/test/jest/coverage/
+
+# yarn
+
+frontend/.yarn/
+

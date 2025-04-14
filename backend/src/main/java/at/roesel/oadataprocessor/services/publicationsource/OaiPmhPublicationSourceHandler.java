@@ -61,6 +61,7 @@ public class OaiPmhPublicationSourceHandler extends AbstractOaiPmhResultResponse
             case idFhCampusWien: dataExtractor = new DataExtractorFhCampusWien(); break;
             case idFhCampus2: dataExtractor = new DataExtractorFhCampus2(); break;
             case idMoz: dataExtractor = new DataExtractorMoz(); break;
+            case idFhv: dataExtractor = new DataExtractorFhv(); break;
             default:
                 dataExtractor = null;
         }

@@ -54,6 +54,7 @@ public class Identifiers {
     public static final String idGMI = "https://ror.org/05twjp994";
     public static final String idMoz = "https://ror.org/00tfmqe91";
     public static final String idDonauUni = "https://ror.org/03ef4a036";
+    public static final String idFhv = "https://ror.org/031wyx077";
 
     public static final String idOpenAlex = "https://openalex.org";
 }

@@ -100,13 +100,13 @@ public class UnpaywallServiceImpl implements UnpaywallService, InitializingBean 
             }
             if (unpaywallSource.getStatus().ok()) {
                 result = unpaywallSource.getRecord();
-                // If the query is older than 3 months, try again.
-                if (updated < SystemTime.currentTimeMillis() - 3 * 30 * 86500 * 1000L) {
+                // If the query is older than 2 months, try again.
+                if (updated < SystemTime.currentTimeMillis() - 2 * 30 * 86400 * 1000L) {
                     fetch = true;
                 }
             } else {
                 // If the query is older than one month, try again.
-                if (updated < SystemTime.currentTimeMillis() - 30 * 86500 * 1000L) {
+                if (updated < SystemTime.currentTimeMillis() - 30 * 86400 * 1000L) {
                     fetch = true;
                 }
             }

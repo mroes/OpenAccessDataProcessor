@@ -100,7 +100,7 @@ public class CrossrefServiceImpl implements CrossrefService, InitializingBean {
                     updated = crossrefSource.getCreated();
                 }
                 // If the query is older than one month, try again.
-                if (updated < SystemTime.currentTimeMillis() - 30 * 86500 * 1000L) {
+                if (updated < SystemTime.currentTimeMillis() - 30 * 86400 * 1000L) {
                     fetch = true;
                 }
             }

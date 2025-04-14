@@ -530,6 +530,8 @@ public class PublicationSourceService {
 
     public FetchResult importPublications(String institutionId, List<PublicationSource> publications) {
 
+        logger.info(String.format("Importing publications for institution %s", institutionId));
+
         SourceLog sourceLog = new SourceLog(institutionId);
         sourceLog.setStartTime(SystemTime.currentTimeMillis());
 
@@ -545,6 +547,9 @@ public class PublicationSourceService {
         Institution institution = institutionService.findById(institutionId);
         // remember time of import
         saveLastImportDate(institution);
+
+        logger.info(String.format("Importing publications for institution %s end", institutionId));
+
         return fetchResult;
     }
 

@@ -183,6 +183,7 @@ export interface FetchResult {
 
 export interface UploadResponse {
   key: string
+  institutionId: string
   fetchResult: FetchResult
 }
 

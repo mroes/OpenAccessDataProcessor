@@ -28,17 +28,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SourcePublicationsStore {
-    private List<PublicationSource> publications = new ArrayList<>();
+    private final String institutionId;
+    private final List<PublicationSource> publications = new ArrayList<>();
 
-    public SourcePublicationsStore(List<PublicationSource> publications) {
+    public SourcePublicationsStore(String institutionId, List<PublicationSource> publications) {
+        this.institutionId = institutionId;
         this.publications.addAll(publications);
+    }
+
+    public String getInstitutionId() {
+        return institutionId;
     }
 
     public List<PublicationSource> getPublications() {
         return publications;
-    }
-
-    public void setPublications(List<PublicationSource> publications) {
-        this.publications = publications;
     }
 }

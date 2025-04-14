@@ -144,6 +144,7 @@ export default defineComponent({
       state.uploading = false
       state.uploadError = ''
       state.result = JSON.parse(xhr.response)
+      state.selectedInstitution = state.result.institutionId
       let previewRows = state.result.fetchResult.publicationSources
       if (!previewRows) {
         previewRows = []
@@ -228,7 +229,6 @@ export default defineComponent({
       state.loading[cmd] = true;
       importPublications({
         cmd: cmd,
-        institutionId: state.selectedInstitution,
         key: state.result.key
       }).then( () => {
         $q.notify({
@@ -252,6 +252,7 @@ export default defineComponent({
       state.disabled.import = false;
       state.disabled.ingest = false;
       state.firstPage = true
+      state.selectedInstitution = ''
     }
 
     return {
@@ -298,9 +299,7 @@ export default defineComponent({
                       :multiple="false"
                       field-name="file"
                       :headers="[{name: 'authorization', value: `Bearer ${authToken}`}]"
-                      :form-fields="[{'name': 'name', 'value': fileName},
-                      {'name': 'institutionId', 'value': selectedInstitution},
-                      ]"
+                      :form-fields="[{'name': 'name', 'value': fileName}]"
                       extensions="*.xls,*.xlsx"
                       :error-message="$t('err_invalid_file')"
                       accept=".xls,.xlsx"

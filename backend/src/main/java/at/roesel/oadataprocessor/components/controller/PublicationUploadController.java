@@ -87,12 +87,12 @@ public class PublicationUploadController {
 
     @PostMapping(path = "/upload")
     @PreAuthorize("hasRole('ROLE_upload') || hasRole('ROLE_admin')")
-    public DeferredResult<ResponseEntity<?>> uploadPublications(@RequestParam("file") MultipartFile file,
-                                                     @RequestParam("institutionId") String institutionId) {
+    public DeferredResult<ResponseEntity<?>> uploadPublications(@RequestParam("file") MultipartFile file) {
 
         DeferredResult<ResponseEntity<?>> output = new DeferredResult<>(appSettings.getDownloadTimeout());
 
-        String institutionCode = null; // = extractIdFromUrl(institutionId);
+        String institutionCode = null;
+        String institutionId = null;
         if (file.getOriginalFilename() != null) {
             institutionCode = extractRorId(file.getOriginalFilename());
             Institution institution = institutionService.findById(rorUrlPrefix + institutionCode);
@@ -117,20 +117,21 @@ public class PublicationUploadController {
 
             String fileName = institutionCode + "_" + UUID.randomUUID() + ext;
             Path target = Paths.get(appSettings.getUploadPath(), fileName);
+            logger.info(String.format("Saving import file %s as %s", file.getOriginalFilename(), target.getFileName()));
             Files.copy(file.getInputStream(), target, StandardCopyOption.REPLACE_EXISTING);
 
             // Process file asynchronously
             String finalInstitutionId = institutionId;
             taskExecutor.submit(() -> {
                 try {
-//                    publicationSourceService.fetchFromCSV(institutionId, target.toFile().getAbsolutePath());
                     FetchResult fetchResult = publicationSourceService.fetchFromExcel(finalInstitutionId, target.toFile().getAbsolutePath(), 0, true);
                     // cache the publications for preview and import
-                    SourcePublicationsStore store = new SourcePublicationsStore(fetchResult.getPublicationSources());
+                    SourcePublicationsStore store = new SourcePublicationsStore(finalInstitutionId, fetchResult.getPublicationSources());
                     String key = UUID.randomUUID().toString();
+                    logger.debug(String.format("Caching processed data for %s with key %s", finalInstitutionId, key));
                     sourcePreviewCache.put(key, store);
                     fetchResult.limitPreviewPublications(100);
-                    output.setResult(new ResponseEntity<>(new UploadResponse(key, fetchResult), HttpStatus.OK));
+                    output.setResult(new ResponseEntity<>(new UploadResponse(key, finalInstitutionId, fetchResult), HttpStatus.OK));
                 } catch (Exception e) {
                     logger.error("Error processing file asynchronously", e);
                     output.setErrorResult(new ResponseEntity<>("Processing error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR));
@@ -149,7 +150,7 @@ public class PublicationUploadController {
     @PreAuthorize("hasRole('ROLE_upload') || hasRole('ROLE_admin') ")
     public ResponseEntity<?> importPublications(@RequestBody ImportParams params) {
 
-        logger.info(String.format("Importing publications for %s", params.institutionId));
+        logger.info(String.format("Importing publications for key %s", params.key));
 
         SourcePublicationsStore store = sourcePreviewCache.get(params.key);
         if (store == null || store.getPublications() == null || store.getPublications().isEmpty()) {
@@ -157,7 +158,7 @@ public class PublicationUploadController {
         }
 
         taskExecutor.submit(() -> {
-            FetchResult fetchResult = publicationSourceService.importPublications(params.institutionId, store.getPublications());
+            FetchResult fetchResult = publicationSourceService.importPublications(store.getInstitutionId(), store.getPublications());
             logger.info(fetchResult.asText());
 
             if ("ingest".equals(params.cmd)) {
@@ -174,19 +175,19 @@ public class PublicationUploadController {
 
     public static class UploadResponse {
 
-        public UploadResponse(String key, FetchResult fetchResult) {
+        public UploadResponse(String key, String institutionId, FetchResult fetchResult) {
             this.key = key;
+            this.institutionId = institutionId;
             this.fetchResult = fetchResult;
         }
 
         public String key;
+        public String institutionId;
         public FetchResult fetchResult;
     }
 
     public static class ImportParams {
         public String cmd;
-        public String institutionId;
-        public String token;
         public String key;  // cache key for uploaded data
     }
 
